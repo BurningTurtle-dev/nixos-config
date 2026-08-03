@@ -19,7 +19,10 @@ exec kdeconnect-indicator
 
 ### Dislays
 
-output eDP-1 scale 1.5 position 0,0
+#other laptop
+output eDP-1 scale 1.0 position 0,0
+#framework
+#output eDP-1 scale 1.5 position 0,0
 output "Lenovo Group Limited Y25-30 U3W0DZ8Y" mode 1920x1080@60Hz position 1920,0
 output "Acer Technologies ACER V243H LHG080184231" mode 1920x1080@60Hz position 0,0
 output "Acer Technologies XV240Y TLVEE0028525" mode 1920x1080@60Hz position 3840,0
@@ -69,7 +72,7 @@ set $menu rofi -show drun -show-icons
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/burningturtle/Pictures/Wallpapers/1716822934568753.jpg fill
+#output * bg /home/burningturtle/Pictures/Wallpapers/1716822934568753.jpg fill
 #
 # Example configuration:
 #

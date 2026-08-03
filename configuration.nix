@@ -7,40 +7,9 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hosts/hp/hardware-configuration.nix
+      ./modules/default.nix
     ];
-
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim
-    alacritty
-    htop
-    librewolf-bin
-    git
-    waybar
-    wlogout
-    rofi
-    cliphist
-    wl-clipboard
-    grim
-    slurp
-    jq
-    brightnessctl
-    kdePackages.dolphin
-    kdePackages.kdeconnect-kde
-    #mullvad-vpn
-  ];
-
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
-
-
-  # polkit
-  security.polkit.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -137,6 +106,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # enable experimental features
+   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
