@@ -36,10 +36,22 @@
     # '';
   };
 
-  # Example: manage a program's config declaratively
-  # programs.git = {
-  #   enable = true;
-  #   userName = "BurningTurtle";
-  #   userEmail = "you@example.com";
-  # };
+   programs.git = {
+     enable = true;
+     userName = "BurningTurtle";
+     userEmail = "git@burningturtle.win";
+   };
+
+   programs.librewolf = {
+    enable = true;
+    # Enable WebGL, cookies and history
+    settings = {
+      "privacy.clearOnShutdown.history" = false;
+    };
+  };
+
+  home.file.".config/sway" = {
+     source = ./dotconfigs/sway;
+     recursive = true;
+   };
 }

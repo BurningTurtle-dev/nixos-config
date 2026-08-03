@@ -19,6 +19,18 @@
     htop
     librewolf-bin
     git
+    waybar
+    wlogout
+    rofi
+    cliphist
+    wl-clipboard
+    grim
+    slurp
+    jq
+    brightnessctl
+    dolphin
+    kdeconnect
+    #mullvad-vpn
   ];
 
   programs.sway = {
