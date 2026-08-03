@@ -11,6 +11,25 @@
     ];
 
 
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    neovim
+    alacritty
+    htop
+    librewolf-bin
+    git
+  ];
+
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+
+
+  # polkit
+  security.polkit.enable = true;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -106,14 +125,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim
-    alacritty
-    htop
-  ];
-
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
