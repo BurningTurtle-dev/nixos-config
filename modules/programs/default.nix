@@ -4,6 +4,7 @@
 {
   imports = [
     ./systempackages.nix
-    ./sway/default.nix
+    ./browser.nix
+    ./sway.nix
   ];
 }

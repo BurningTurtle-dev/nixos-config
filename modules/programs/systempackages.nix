@@ -20,6 +20,7 @@
     kdePackages.dolphin
     kdePackages.kdeconnect-kde
     # mullvad-vpn
+    tldr
   ];
 }
 

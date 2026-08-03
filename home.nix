@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    home-manager/default.nix
+  ];
+
   home.username = "burningturtle";
   home.homeDirectory = "/home/burningturtle";
 
