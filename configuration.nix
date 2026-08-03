@@ -28,8 +28,8 @@
     slurp
     jq
     brightnessctl
-    dolphin
-    kdeconnect
+    kdePackages.dolphin
+    kdePackages.kdeconnect-kde
     #mullvad-vpn
   ];
 
