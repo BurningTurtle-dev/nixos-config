@@ -3,7 +3,7 @@
 
 {
   imports = [
-    ./rofi.nix
+    ./rofi/rofi.nix
     ./sway/home.nix
   ];
 }

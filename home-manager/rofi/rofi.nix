@@ -2,7 +2,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  theme = ../dotconfigs/rofi/custom.rasi;
+  theme = ./custom.rasi;
 in
 {
   programs.rofi = {
