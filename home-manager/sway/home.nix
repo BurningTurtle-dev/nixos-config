@@ -591,6 +591,8 @@ in
   wayland.windowManager.sway = {
     enable = true;
 
+    package = pkgs.sway;
+
     config = {
       modifier = "Mod4";
       terminal = "alacritty";
@@ -811,6 +813,9 @@ in
               inactive_workspace #32323200 #32323200 #5c5c5c
           }
       }
+
+      # Force workspace 1 to be the default
+      workspace 1
 
       include /etc/sway/config.d/*
     '';

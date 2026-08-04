@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./programs/default.nix
+    ./apps/default.nix
     ./displaymanager/default.nix
     ./services/default.nix
   ];
