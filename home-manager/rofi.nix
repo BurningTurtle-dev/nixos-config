@@ -1,8 +1,8 @@
 
-{ config, lib, pkgs, ...}:
+{ config, lib, pkgs, ... }:
 
 let
-  theme = ../dotconfigs/rofi/custom.rasi
+  theme = ../dotconfigs/rofi/custom.rasi;
 in
 {
   programs.rofi = {
@@ -14,10 +14,11 @@ in
       "drun"
       "run"
       "window"
-      "ssh"  
+      "ssh"
     ];
     extraConfig = {
       show-icons = true;
     };
   };
 }
+

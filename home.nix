@@ -54,8 +54,10 @@
     };
   };
 
-  home.file.".config/sway" = {
-     source = ./dotconfigs/sway;
-     recursive = true;
-   };
+  #home.file.".config/sway" = {
+  #   source = ./dotconfigs/sway;
+  #   recursive = true;
+  # };
+
+
 }

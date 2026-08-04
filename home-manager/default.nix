@@ -4,5 +4,6 @@
 {
   imports = [
     ./rofi.nix
+    ./sway/home.nix
   ];
 }

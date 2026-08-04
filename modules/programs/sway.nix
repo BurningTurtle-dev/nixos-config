@@ -4,9 +4,6 @@
 {
   programs.sway = {
     enable = true;
-    wrapperFeatures.gtk = true;
+    # Don't add extraConfig or other settings here - let home-manager handle it
   };
-
-  # polkit
-  security.polkit.enable = true;
 }

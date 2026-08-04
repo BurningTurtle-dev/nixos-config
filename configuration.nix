@@ -12,8 +12,17 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.loader = {
+    grub = {
+      enable = true;
+      device = "nodev"; # "nodev" is used for UEFI
+      efiSupport = true;
+    };
+    efi.canTouchEfiVariables = true;
+  };
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -44,7 +53,7 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = false;
+  services.xserver.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -78,6 +87,9 @@
 
   # enable experimental features
    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Garbage collection
+  nix.gc.automatic = true;
   
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
