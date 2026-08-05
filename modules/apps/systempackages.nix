@@ -9,6 +9,7 @@
     tldr
     mc
     p7zip
+    killall
   ];
 }
 

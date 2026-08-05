@@ -5,5 +5,6 @@
   imports = [
     ./cups.nix
     ./sound.nix
+    ./displaymanager.nix
   ];
 }
