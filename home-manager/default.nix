@@ -7,5 +7,7 @@
     ./sway/home.nix
     ./alacritty.nix
     ./themes.nix
+    ./userapps.nix
+    ./librewolf.nix
   ];
 }

@@ -9,6 +9,11 @@ let
   '';
 in
 {
+  imports = [
+    ../librewolf.nix
+    ];
+
+
   ###########################################################################
   ## Packages used by keybindings / autostart / scripts
   ###########################################################################
@@ -18,8 +23,6 @@ in
     rofi
     nemo-with-extensions
 
-    # browser
-    librewolf
 
     # screenshots / clipboard
     grim

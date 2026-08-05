@@ -53,13 +53,13 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  services.xserver.enable = false;
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "intl";
-  };
+  #services.xserver.xkb = {
+  #  layout = "us";
+  #  variant = "intl";
+  #};
 
   # Configure console keymap
   console.keyMap = "us-acentos";

@@ -12,35 +12,6 @@
   # and generally shouldn't be bumped casually - same rule as system.stateVersion.
   home.stateVersion = "26.05";
 
-  # Packages you want available just for this user (as opposed to
-  # environment.systemPackages, which is system-wide)
-  home.packages = with pkgs; [
-    vscodium
-    obsidian
-    openscad
-    seafile-client
-    jstest-gtk
-    qalculate-gtk
-    texstudio
-    brave-origin
-    signal-desktop
-    arduino-ide
-    kdePackages.ark
-    calibre
-    wdisplays
-    gammastep
-    kdePackages.kate
-    gparted
-    krita
-    libreoffice
-    mpv
-    vlc
-    kdePackages.okular
-    qbittorrent
-    tailscale
-    unityhub
-    zoom-us
-  ];
 
   # Let home-manager manage itself
   programs.home-manager.enable = true;
@@ -63,18 +34,13 @@
     # '';
   };
 
-   programs.git = {
-     enable = true;
-     userName = "BurningTurtle";
-     userEmail = "git@burningturtle.win";
-   };
-
-   programs.librewolf = {
+  programs.git = {
     enable = true;
-    # Enable WebGL, cookies and history
-    settings = {
-      "privacy.clearOnShutdown.history" = false;
-    };
+    userName = "BurningTurtle";
+    userEmail = "git@burningturtle.win";
   };
 
+  programs.my-librewolf = {
+    enable = true;
+  };
 }
