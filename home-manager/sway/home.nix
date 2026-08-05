@@ -16,7 +16,7 @@ in
     # terminal / launcher / file manager
     alacritty
     rofi
-    kdePackages.dolphin
+    nemo-with-extensions
 
     # browser
     librewolf
@@ -46,12 +46,6 @@ in
     #mullvad-vpn
     kdePackages.kdeconnect-kde
 
-    # polkit agent (as used in your original config)
-    #hyprpolkitagent
-
-    # misc used by "exec XDG_MENU_PREFIX=arch- kbuildsycoca6" (KDE service cache rebuild)
-    kdePackages.kservice
-
     fish
   ];
 
@@ -63,146 +57,107 @@ in
     systemd.enable = false; # we start it from sway's startup list instead, matching your original exec line
 
     settings = {
-      mainBar = {
-        height = 30;
-        spacing = 4;
-        margin-top = 10;
-        margin-left = 10;
-        margin-right = 10;
-        margin-bottom = 0;
+    mainBar = {
+      height = 30;
+      spacing = 4;
+      margin-top = 10;
+      margin-left = 10;
+      margin-right = 10;
+      margin-bottom = 0;
 
-        modules-left = [ "sway/workspaces" "sway/mode" ];
-        modules-center = [ "sway/window" ];
-        modules-right = [
-          "sway/language"
-          "pulseaudio"
-          "network"
-          "backlight"
-          "battery"
-          "battery#bat2"
-          "clock"
-          "tray"
-        ];
+      modules-left = [ "sway/workspaces" "sway/mode" ];
+      modules-center = [ "sway/window" ];
+      modules-right = [
+        "sway/language"
+        "pulseaudio"
+        "network"
+        "backlight"
+        "battery"
+        "battery#bat2"
+        "clock"
+        "tray"
+      ];
 
-        "custom/border" = {
-          format = "|";
+      "sway/language" = {
+        format = "{short}";
+      };
+
+      "sway/workspaces" = {
+        format = "{name}";
+        all-outputs = false;
+        disable-scroll = false;
+      };
+
+      "sway/window" = {
+        format = "{title}";
+        max-length = 60;
+        tooltip = false;
+        icon = true;
+      };
+
+      tray = {
+        spacing = 5;
+      };
+
+      clock = {
+        timezone = "Europe/Berlin";
+        tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        format-alt = "{:%Y-%m-%d}";
+      };
+
+      backlight = {
+        format = "{percent}% {icon}";
+        format-icons = [ "" ];
+      };
+
+      battery = {
+        states = {
+          warning = 30;
+          critical = 15;
         };
+        format = "{capacity}% {icon}";
+        format-full = "{capacity}% {icon}";
+        format-charging = "{capacity}% ";
+        format-plugged = "{capacity}% ";
+        format-alt = "{time} {icon}";
+        format-icons = [ "" "" "" "" "" ];
+      };
 
-        "keyboard-state" = {
-          numlock = true;
-          capslock = true;
-          format = "{name} {icon}";
-          format-icons = {
-            locked = "";
-            unlocked = "";
-          };
-        };
+      "battery#bat2" = {
+        bat = "BAT2";
+      };
 
-        "sway/language" = {
-          format = "{short}";
-        };
+      network = {
+        format-wifi = "{essid} ({signalStrength}%) ";
+        format-ethernet = "{ipaddr}/{cidr} ";
+        tooltip-format = "{ifname} via {gwaddr} ";
+        format-linked = "{ifname} (No IP) ";
+        format-disconnected = "Disconnected ⚠";
+        format-alt = "{ifname}: {ipaddr}/{cidr}";
+      };
 
-        "sway/workspaces" = {
-          format = "{name}";
-          all-outputs = false;
-          disable-scroll = false;
+      pulseaudio = {
+        format = "{volume}% {icon}";
+        format-bluetooth = "{volume}% {icon} {format_source}";
+        format-bluetooth-muted = " {icon} {format_source}";
+        format-muted = " {format_source}";
+        format-source = "{volume}% ";
+        format-source-muted = "";
+        format-icons = {
+          headphone = "";
+          hands-free = "";
+          headset = "";
+          phone = "";
+          portable = "";
+          car = "";
+          default = [ "" "" "" ];
         };
-
-        "sway/window" = {
-          format = "{title}";
-          max-length = 60;
-          tooltip = false;
-          icon = true;
-        };
-
-        tray = {
-          spacing = 5;
-        };
-
-        clock = {
-          timezone = "Europe/Berlin";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format-alt = "{:%Y-%m-%d}";
-        };
-
-        cpu = {
-          format = "{usage}% ";
-          tooltip = false;
-        };
-
-        memory = {
-          format = "{}% ";
-        };
-
-        temperature = {
-          critical-threshold = 80;
-          format = "{temperatureC}°C {icon}";
-          format-icons = [ "" "" "" ];
-        };
-
-        backlight = {
-          format = "{percent}% {icon}";
-          format-icons = [ "" ];
-        };
-
-        battery = {
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{capacity}% {icon}";
-          format-full = "{capacity}% {icon}";
-          format-charging = "{capacity}% ";
-          format-plugged = "{capacity}% ";
-          format-alt = "{time} {icon}";
-          format-icons = [ "" "" "" "" "" ];
-        };
-
-        "battery#bat2" = {
-          bat = "BAT2";
-        };
-
-        "power-profiles-daemon" = {
-          format = "{icon}";
-          tooltip-format = "Power profile: {profile}\nDriver: {driver}";
-          tooltip = true;
-          format-icons = {
-            default = "";
-            performance = "";
-            balanced = "";
-            power-saver = "";
-          };
-        };
-
-        network = {
-          format-wifi = "{essid} ({signalStrength}%) ";
-          format-ethernet = "{ipaddr}/{cidr} ";
-          tooltip-format = "{ifname} via {gwaddr} ";
-          format-linked = "{ifname} (No IP) ";
-          format-disconnected = "Disconnected ⚠";
-          format-alt = "{ifname}: {ipaddr}/{cidr}";
-        };
-
-        pulseaudio = {
-          format = "{volume}% {icon}";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
-          format-muted = " {format_source}";
-          format-source = "{volume}% ";
-          format-source-muted = "";
-          format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = [ "" "" "" ];
-          };
-          on-click = "pavucontrol";
-        };
+        on-click = "pavucontrol";
       };
     };
+    };
+  
+
 
     style = ''
       * {
@@ -674,7 +629,7 @@ in
       in {
         # Custom
         "${mod}+t" = "exec librewolf";
-        "${mod}+e" = "exec dolphin";
+        "${mod}+e" = "exec nemo";
         "${mod}+q" = "exec wlogout";
         "${mod}+c" = "exec cliphist list | rofi -dmenu --gtk-dark | cliphist decode | wl-copy";
         "${mod}+p" = "exec grim -g \"$(slurp -d)\" - | wl-copy";

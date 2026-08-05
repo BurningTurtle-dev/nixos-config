@@ -18,6 +18,7 @@ in
     ];
     extraConfig = {
       show-icons = true;
+      icon-theme = "Adwaita";
     };
   };
 }

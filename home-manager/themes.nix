@@ -4,9 +4,8 @@
   home.packages = with pkgs; [
     material-black-colors
     kdePackages.qt6ct
-    adwaita-qt6
+    #adwaita-qt6
     kdePackages.breeze
-    kdePackages.kconfig
   ];
 
   # Backup existing GTK configs before Home Manager writes its own
@@ -38,35 +37,16 @@
     };
 
     cursorTheme = {
-      name = "Adwaita";
-      package = pkgs.gnome-themes-extra;
+      name = "Breeze";
+      package = pkgs.kdePackages.breeze-gtk;
     };
   };
 
   qt = {
     enable = true;
-    platformTheme.name = "kde";
-    style.name = "breeze";
   };
 
   home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "kde";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
   };
-
-  home.file.".config/kdeglobals" = {
-    text = ''
-      [General]
-      ColorScheme=BreezeDark
-      Name=Breeze Dark
-
-      [Icons]
-      Theme=MB-Pistachio-Suru-GLOW
-
-      [KDE]
-      widgetStyle=Breeze
-    '';
-    force = true;
-  };
-
-  home.file.".local/share/color-schemes/BreezeDark.colors".source = "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
 }
