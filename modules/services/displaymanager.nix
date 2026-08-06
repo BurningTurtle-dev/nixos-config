@@ -1,6 +1,12 @@
 
-{  config, lib, pkgs, ... }:
+{  config, pkgs, ... }:
 
 {
-  services.displayManager.ly.enable = true;
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      ly_log = "/var/log/ly.log";
+      session_log = ".local/state/ly-session.log";
+    };
+  };
 }

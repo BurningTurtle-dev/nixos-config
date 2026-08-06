@@ -10,6 +10,9 @@
     mc
     p7zip
     killall
+    gnumake
+    speedtest-cli
+    tree
   ];
 }
 

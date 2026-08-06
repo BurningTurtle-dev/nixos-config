@@ -9,5 +9,6 @@
     ./themes.nix
     ./userapps.nix
     ./librewolf.nix
+    ./nixvim.nix
   ];
 }

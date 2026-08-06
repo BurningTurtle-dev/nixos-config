@@ -36,8 +36,12 @@
 
   programs.git = {
     enable = true;
-    userName = "BurningTurtle";
-    userEmail = "git@burningturtle.win";
+    settings = {
+      user = {
+        name = "BurningTurtle";
+        email = "git@burningturtle.win";
+      };
+    };
   };
 
   programs.my-librewolf = {

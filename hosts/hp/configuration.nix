@@ -7,8 +7,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hosts/hp/hardware-configuration.nix
-      ./modules/default.nix
+      ./hardware-configuration.nix
+      ../../modules/default.nix
     ];
 
   # Bootloader.

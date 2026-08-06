@@ -9,10 +9,6 @@ let
   '';
 in
 {
-  imports = [
-    ../librewolf.nix
-    ];
-
 
   ###########################################################################
   ## Packages used by keybindings / autostart / scripts
