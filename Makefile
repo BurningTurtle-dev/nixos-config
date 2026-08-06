@@ -1,14 +1,16 @@
+
+.PHONY: build upgrade garbage all
+
 build:
 	clear
-	nixos-rebuild switch --flake .#nixos
+	@[ -n "$(HARDWARE)" ] || { echo "HARDWARE env var not set. Canceling build!!!"; exit 1; }
+	nixos-rebuild switch --flake .#$(HARDWARE)
 
 upgrade:
 	nix flake update
-	make build
+	$(MAKE) build
 
 garbage:
 	nix-collect-garbage -d
 
-all:
-	make upgrade
-	make garbage
+all: upgrade garbage
