@@ -13,6 +13,7 @@
     gnumake
     speedtest-cli
     tree
+    home-manager
   ];
 }
 

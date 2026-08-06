@@ -1,5 +1,5 @@
 
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -11,18 +11,55 @@
     
     opts = {
       number = true;
+      smartindent = true;
+      autoindent = true;
+      expandtab = true;
     };
 
     plugins = {
-      smartcolumn.settings.colorcolumn = "80";
       transparent = {
         enable = true;
         autoLoad = true;
       };
-      sleuth.enable = true;
+
+      treesitter = {
+        enable = true;
+        highlight.enable = true;
+        indent.enable = true;
+        folding.enable = false;
+
+      grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
+          bash
+          c
+          json
+          lua
+          make
+          markdown
+          nix
+          python
+          regex
+          toml
+          vim
+          vimdoc
+          xml
+          yaml
+        ];
+      };
+
+      sleuth = {
+        enable = true;
+        autoLoad = true;
+      };
+
+      lspconfig = {
+        enable = false;
+	autoLoad = true;
+      };
+
     };
 
     extraConfigLua = ''
+
       vim.api.nvim_create_autocmd("VimEnter", {
         callback = function()
           vim.cmd("TransparentEnable")
