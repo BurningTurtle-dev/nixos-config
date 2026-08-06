@@ -5,6 +5,11 @@
   environment.variables = {
     HARDWARE = "hp";
   };
+
+  home-manager.users.burningturtle = {
+    my.sway.eDP_scale = "1.0";
+  };
+
   imports =
     [
       ./hardware-configuration.nix
@@ -80,7 +85,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # enable experimental features
-   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Garbage collection
   nix.gc.automatic = true;

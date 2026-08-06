@@ -3,6 +3,7 @@
 {
   imports = [
     home-manager/default.nix
+    ./options.nix
   ];
 
   home.username = "burningturtle";

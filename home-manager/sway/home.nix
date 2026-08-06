@@ -591,7 +591,7 @@ in
 
       output = {
         "eDP-1" = {
-          scale = "1";
+          scale = config.my.sway.eDP_scale;
           position = "0,0";
         };
         "Lenovo Group Limited Y25-30 U3W0DZ8Y" = {
