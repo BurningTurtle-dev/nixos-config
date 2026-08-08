@@ -6,6 +6,10 @@
     ./options.nix
   ];
 
+  home.sessionVariables = {
+    XDG_DATA_DIRS = "/var/lib/flatpak/exports/share:${config.home.profileDirectory}/share:$XDG_DATA_DIRS";
+  };
+
   home.username = "burningturtle";
   home.homeDirectory = "/home/burningturtle";
 

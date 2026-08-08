@@ -10,5 +10,6 @@
     ./userapps.nix
     ./librewolf.nix
     ./nixvim.nix
+    ./flatpak.nix
   ];
 }

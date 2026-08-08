@@ -2,8 +2,6 @@
 { config, pkgs, ... }:
 
 {
-  # Packages you want available just for this user (as opposed to
-  # environment.systemPackages, which is system-wide)
   home.packages = with pkgs; [
     vscodium
     obsidian
@@ -30,5 +28,6 @@
     tailscale
     unityhub
     zoom-us
+    fastfetch
   ];
 }

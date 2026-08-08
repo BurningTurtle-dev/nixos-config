@@ -4,6 +4,7 @@
 {
   home.packages = with pkgs; [
     ripgrep
+    clang-tools
   ];
 
   programs.nixvim = {
@@ -52,10 +53,13 @@
       };
 
       lspconfig = {
-        enable = false;
+        enable = true;
 	autoLoad = true;
       };
+    };
 
+    lsp.servers = {
+      clangd.enable = true;
     };
 
     extraConfigLua = ''

@@ -6,5 +6,6 @@
     ./cups.nix
     ./sound.nix
     ./displaymanager.nix
+    ./flatpak.nix
   ];
 }

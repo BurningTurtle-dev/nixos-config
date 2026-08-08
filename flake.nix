@@ -8,9 +8,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixvim = { url = "github:nix-community/nixvim"; };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nixvim, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, ... }:
     let
       system = "x86_64-linux";
     in {
@@ -28,6 +29,7 @@
                 imports = [
                   ./home.nix
                   nixvim.homeModules.nixvim
+		  nix-flatpak.homeManagerModules.nix-flatpak
                 ];
               };
             }
