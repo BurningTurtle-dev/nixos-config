@@ -14,6 +14,8 @@
     speedtest-cli
     tree
     home-manager
+    age
+    sops
   ];
 }
 

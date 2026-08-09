@@ -1,0 +1,9 @@
+keys:
+  - &host_key ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKUARuN+/ZxULnXelcZDvbY9ShowpKOgorxkyY3KZnYs root@nixos
+  - &sops_key age1hgw6qnfjy25tq23lzwfl3w4maua9d2g3vwj6ayv5a8cuuxe8jchs93yhqy
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *host_key
+          - *sops_key
