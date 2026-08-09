@@ -53,7 +53,7 @@ in
   ###########################################################################
   programs.waybar = {
     enable = true;
-    systemd.enable = false; # we start it from sway's startup list instead, matching your original exec line
+    systemd.enable = true; # we start it from sway's startup list instead, matching your original exec line
 
     settings = {
     mainBar = {
@@ -497,21 +497,6 @@ in
     '';
   };
 
-  xdg.configFile."sway/workspace_to_display.sh" = {
-    executable = true;
-    text = ''
-      #!/usr/bin/env bash
-      # Get the current display
-      current_output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused==true) | .name')
-
-      swaymsg "[workspace=$1] move workspace to output ''${current_output}"
-
-      swaymsg workspace number "$1"
-
-      exit 0
-    '';
-  };
-
   xdg.configFile."sway/set_drawingtablet_region.sh" = {
     executable = true;
     text = ''
@@ -521,29 +506,14 @@ in
     '';
   };
 
-  xdg.configFile."sway/musicsetup.fish" = {
-    executable = true;
-    text = ''
-      #!/usr/bin/env fish
-
-      # Start Alacritty with cmus inside it
-      alacritty -e bluetuith &
-
-      # Start pavucontrol (GUI volume control)
-      pavucontrol &
-
-      # Disown both background jobs so they are not tied to the shell
-      disown;
-
-      cmus
-    '';
-  };
 
   ###########################################################################
   ## Sway
   ###########################################################################
   wayland.windowManager.sway = {
     enable = true;
+
+    wrapperFeatures.gtk = true;
 
     package = pkgs.sway;
 
@@ -612,14 +582,10 @@ in
       # We drive waybar from here (with systemd.enable = false above) so it
       # keeps behaving exactly like your original setup.
       startup = [
-        { command = "waybar"; }
+#        { command = "waybar"; }
         { command = "cliphist wipe"; } # wipes history on startup
         { command = "wl-paste --type text --watch cliphist store"; }
         { command = "wl-paste --type image --watch cliphist store"; }
-        #{ command = "XDG_MENU_PREFIX=arch- kbuildsycoca6"; }
-        #{ command = "systemctl --user start hyprpolkitagent"; }
-        #{ command = "mullvad lockdown-mode set on"; }
-        #{ command = "mullvad connect"; }
         { command = "kdeconnect-indicator"; }
       ];
 

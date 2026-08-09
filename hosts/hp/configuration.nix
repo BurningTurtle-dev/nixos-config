@@ -37,6 +37,8 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  security.polkit.enable = true;
+
   networking.hostName = "nixos"; # Define your hostname.
 
   # Enable networking

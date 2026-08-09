@@ -7,5 +7,6 @@
     ./sound.nix
     ./displaymanager.nix
     ./flatpak.nix
+    ./other.nix
   ];
 }
