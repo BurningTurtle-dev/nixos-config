@@ -5,7 +5,7 @@ let
   # Make wallpaper available in the Nix store
   wallpaper = pkgs.runCommand "wallpaper-1716822934568753" {} ''
     mkdir -p $out
-    cp ${./../../wallpapers/1716822934568753.jpg} $out/wallpaper.jpg
+    cp ${./../wallpapers/1716822934568753.jpg} $out/wallpaper.jpg
   '';
 in
 {
@@ -14,38 +14,23 @@ in
   ## Packages used by keybindings / autostart / scripts
   ###########################################################################
   home.packages = with pkgs; [
-    # terminal / launcher / file manager
     alacritty
     rofi
     nemo-with-extensions
-
-
-    # screenshots / clipboard
     grim
     slurp
     wl-clipboard
     cliphist
-
-    # session / lock / logout
     wlogout
-
-    # brightness / audio
     brightnessctl
     pavucontrol
-    pulseaudio # provides pactl; swap for `pipewire` tooling if you use pipewire-pulse only
-
-    # status bar helper deps
+    pulseaudio
     jq
-
-    # music / bluetooth audio
     cmus
     bluetuith
-
-    # VPN / connectivity
-    #mullvad-vpn
     kdePackages.kdeconnect-kde
-
     fish
+    swaylock
   ];
 
   ###########################################################################
@@ -53,7 +38,7 @@ in
   ###########################################################################
   programs.waybar = {
     enable = true;
-    systemd.enable = true; # we start it from sway's startup list instead, matching your original exec line
+    systemd.enable = false;
 
     settings = {
     mainBar = {
@@ -582,11 +567,12 @@ in
       # We drive waybar from here (with systemd.enable = false above) so it
       # keeps behaving exactly like your original setup.
       startup = [
-#        { command = "waybar"; }
+        { command = "waybar"; }
         { command = "cliphist wipe"; } # wipes history on startup
         { command = "wl-paste --type text --watch cliphist store"; }
         { command = "wl-paste --type image --watch cliphist store"; }
         { command = "kdeconnect-indicator"; }
+	{ command = "systemctl --user start hyprpolkitagent"; }
       ];
 
       keybindings = let

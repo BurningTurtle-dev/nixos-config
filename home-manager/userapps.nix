@@ -18,7 +18,6 @@
     wdisplays
     gammastep
     kdePackages.kate
-    gparted
     krita
     libreoffice
     mpv
@@ -29,5 +28,7 @@
     unityhub
     zoom-us
     fastfetch
+    hyprpolkitagent
+    gparted
   ];
 }

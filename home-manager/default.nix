@@ -4,7 +4,7 @@
 {
   imports = [
     ./rofi/rofi.nix
-    ./sway/home.nix
+    ./sway.nix
     ./alacritty.nix
     ./themes.nix
     ./userapps.nix
