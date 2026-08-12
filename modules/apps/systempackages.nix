@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -16,6 +16,7 @@
     home-manager
     age
     sops
+    age-plugin-yubikey
   ];
 }
 

@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    gcc
-    valgrind
+    stlink
+    jstest-gtk
   ];
 }

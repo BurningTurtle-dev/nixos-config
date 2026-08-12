@@ -1,3 +1,4 @@
+
 { config, pkgs, ... }:
 
 {
@@ -17,27 +18,8 @@
   # and generally shouldn't be bumped casually - same rule as system.stateVersion.
   home.stateVersion = "26.05";
 
-
   # Let home-manager manage itself
   programs.home-manager.enable = true;
-
-  # Fish shell config (aliases, greeting, etc.)
-  programs.fish = {
-    enable = true;
-
-    shellAliases = {
-      ll = "ls -la";
-      gs = "git status";
-    };
-
-    shellInit = ''
-      set -g fish_greeting ""
-    '';
-
-    # interactiveShellInit = ''
-    #   # anything you'd normally put in config.fish
-    # '';
-  };
 
   programs.git = {
     enable = true;

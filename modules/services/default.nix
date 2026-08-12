@@ -1,12 +1,15 @@
 
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   imports = [
     ./cups.nix
     ./sound.nix
     ./displaymanager.nix
-    ./flatpak.nix
     ./other.nix
+    ./bluetooth.nix
+    ./docker.nix
+    ./networkmanager/default.nix
+    ./flatpak.nix
   ];
 }

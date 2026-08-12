@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   theme = ./custom.rasi;

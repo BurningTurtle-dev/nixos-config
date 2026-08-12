@@ -9,13 +9,26 @@
 
   programs.nixvim = {
     enable = true;
-    
+
     opts = {
       number = true;
-      smartindent = true;
-      autoindent = true;
-      expandtab = true;
+      # tabstop = 4;
+      # shiftwidth = 4;
     };
+
+    clipboard = {
+      register = "unnamedplus";
+      providers = {
+        wl-copy = {
+          enable = true;
+          package = pkgs.wl-clipboard;
+        };
+      };
+    };
+
+    colorschemes.gruvbox.enable = true;
+
+    extraPlugins = with pkgs.vimPlugins; [ netrw-nvim ];
 
     plugins = {
       transparent = {
@@ -28,8 +41,7 @@
         highlight.enable = true;
         indent.enable = true;
         folding.enable = false;
-
-      grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
+        grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
           bash
           c
           json
@@ -52,17 +64,109 @@
         autoLoad = true;
       };
 
+      lualine = {
+        enable = true;
+      };
+
+      nvim-autopairs = {
+        enable = true;
+      };
+
+      cmp = {
+        enable = true;
+        settings = {
+          snippet = {
+            expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+          };
+          mapping = {
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-e>" = "cmp.mapping.close()";
+            "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+            "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+          };
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "luasnip"; }
+            { name = "buffer"; }
+            { name = "path"; }
+          ];
+        };
+      };
+
+      cmp-nvim-lsp.enable = true;
+      cmp-buffer.enable = true;
+      cmp-path.enable = true;
+      cmp_luasnip.enable = true;
+
+      luasnip = {
+        enable = true;
+      };
+
       lspconfig = {
         enable = true;
-	autoLoad = true;
+        autoLoad = true;
       };
     };
 
-    lsp.servers = {
-      clangd.enable = true;
+    lsp = {
+      servers = {
+        clangd.enable = true;
+        nixd.enable = true;
+        basedpyright.enable = true;
+        bashls.enable = true;
+        lua_ls.enable = true;
+        jsonls.enable = true;
+        yamlls.enable = true;
+        taplo.enable = true;
+        lemminx.enable = true;
+        marksman.enable = true;
+      };
+
+      inlayHints.enable = true;
+    };
+
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>d";
+        action = "<cmd>lua _G.next_problem()<CR>";
+        options = {
+          desc = "Show diagnostic";
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>f";
+        action = "<cmd>lua _G.next_fix()<CR>";
+        options = {
+          desc = "Suggest fix for next problem";
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = ":Explore<CR>";
+        options = {
+          desc = "Open netrw explorer";
+        };
+      }
+    ];
+
+    globals = {
+      mapleader = " ";
     };
 
     extraConfigLua = ''
+      function _G.next_fix()
+        local success = vim.diagnostic.jump({ count = 1 })
+        if success then
+          vim.lsp.buf.code_action()
+        end
+      end
+
+      function _G.next_problem()
+        vim.diagnostic.open_float()
+      end
 
       vim.api.nvim_create_autocmd("VimEnter", {
         callback = function()

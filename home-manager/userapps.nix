@@ -1,5 +1,5 @@
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -7,9 +7,7 @@
     obsidian
     openscad
     seafile-client
-    jstest-gtk
     qalculate-gtk
-    brave-origin
     signal-desktop
     arduino-ide
     calibre
@@ -20,16 +18,17 @@
     mpv
     vlc
     qbittorrent
-    tailscale
-    unityhub
     zoom-us
+    tailscale-systray
     fastfetch
-    hyprpolkitagent
     gparted
     seafile-client
     gedit
-    zathura
-    zathuraPkgs.zathura_pdf_mupdf
     file-roller
+    xournalpp
+    jellyfin-desktop
+    imv
+    yt-dlp
+    wiremix
   ];
 }

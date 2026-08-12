@@ -2,17 +2,12 @@
 { config, pkgs, ... }:
 
 let
-  # Make wallpaper available in the Nix store
   wallpaper = pkgs.runCommand "wallpaper-1716822934568753" {} ''
     mkdir -p $out
     cp ${./../wallpapers/1716822934568753.jpg} $out/wallpaper.jpg
   '';
 in
 {
-
-  ###########################################################################
-  ## Packages used by keybindings / autostart / scripts
-  ###########################################################################
   home.packages = with pkgs; [
     alacritty
     rofi
@@ -28,9 +23,9 @@ in
     jq
     cmus
     bluetuith
-    kdePackages.kdeconnect-kde
     fish
     swaylock
+    nerd-fonts.adwaita-mono
   ];
 
   ###########################################################################
@@ -91,7 +86,7 @@ in
 
       backlight = {
         format = "{percent}% {icon}";
-        format-icons = [ "" ];
+        format-icons = [ "󰃟" ];
       };
 
       battery = {
@@ -104,7 +99,7 @@ in
         format-charging = "{capacity}% ";
         format-plugged = "{capacity}% ";
         format-alt = "{time} {icon}";
-        format-icons = [ "" "" "" "" "" ];
+        format-icons = [ "" "" "" "" "" ];
       };
 
       "battery#bat2" = {
@@ -112,41 +107,41 @@ in
       };
 
       network = {
-        format-wifi = "{essid} ({signalStrength}%) ";
-        format-ethernet = "{ipaddr}/{cidr} ";
-        tooltip-format = "{ifname} via {gwaddr} ";
-        format-linked = "{ifname} (No IP) ";
-        format-disconnected = "Disconnected ⚠";
+        format-wifi = "{essid} ({signalStrength}%) 󰖩";
+        format-ethernet = "{ipaddr}/{cidr} ";
+        tooltip-format = "{ifname} via {gwaddr} ";
+        format-linked = "{ifname} (No IP) ";
+        format-disconnected = "Disconnected 󱚵";
         format-alt = "{ifname}: {ipaddr}/{cidr}";
       };
 
       pulseaudio = {
         format = "{volume}% {icon}";
-        format-bluetooth = "{volume}% {icon} {format_source}";
-        format-bluetooth-muted = " {icon} {format_source}";
-        format-muted = " {format_source}";
-        format-source = "{volume}% ";
-        format-source-muted = "";
+        format-bluetooth = "{volume}% {icon}󰂯 {format_source}";
+        format-bluetooth-muted = " {icon}󰂲 {format_source}";
+        format-muted = "{format_source}";
+        format-source = "{volume}% ";
+        format-source-muted = "󰝟";
         format-icons = {
-          headphone = "";
-          hands-free = "";
-          headset = "";
-          phone = "";
-          portable = "";
-          car = "";
-          default = [ "" "" "" ];
+          headphone = "";
+          hands-free = "";
+          headset = "";
+          phone = "";
+          portable = "";
+          car = "";
+          default = [ "󰕿" "󰖀" "󰕾" ];
         };
         on-click = "pavucontrol";
       };
     };
-    };
+  };
   
 
 
     style = ''
       * {
           /* `otf-font-awesome` is required to be installed for icons */
-          font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+          font-family: "AdwaitaMono Nerd Font Propo", Roboto, Helvetica, Arial, sans-serif;
           font-size: 13px;
           border-radius: 10px;
       }
@@ -497,7 +492,6 @@ in
   ###########################################################################
   wayland.windowManager.sway = {
     enable = true;
-    #checkConfig = false;
 
     wrapperFeatures.gtk = true;
 
@@ -541,7 +535,6 @@ in
           tap_button_map = "lrm";
         };
 	"1386:891:Wacom_One_by_Wacom_M_Pen" = {
-          #map_to_output = "DP-6";
           events = "enabled";
         };
       };
@@ -565,16 +558,13 @@ in
         };
       };
 
-      # Things started at sway launch, matching your original `exec` lines.
-      # We drive waybar from here (with systemd.enable = false above) so it
-      # keeps behaving exactly like your original setup.
       startup = [
         { command = "waybar"; }
-        { command = "cliphist wipe"; } # wipes history on startup
+        { command = "cliphist wipe"; }
         { command = "wl-paste --type text --watch cliphist store"; }
         { command = "wl-paste --type image --watch cliphist store"; }
-        { command = "kdeconnect-indicator"; }
-	{ command = "systemctl --user start hyprpolkitagent"; }
+        { command = "localsend_app --hidden"; }
+        { command = "seafile-applet"; }
       ];
 
       keybindings = let
@@ -684,8 +674,6 @@ in
       bars = [ ]; # bar block is defined via extraConfig below (needs "mode invisible" + a shell status_command, which isn't cleanly expressible via home-manager's bar options)
     };
 
-    # Anything without a clean structured home-manager option, transcribed
-    # verbatim from your original config.
     extraConfig = ''
       ### Keyboard
       input * {
@@ -708,20 +696,6 @@ in
       # Resize them with right mouse button + $mod ("normal" binding mode).
       floating_modifier Mod4 normal
 
-      ### Status bar
-      bar {
-          position top
-          mode invisible
-
-          status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-          colors {
-              statusline #ffffff
-              background #00000000
-              inactive_workspace #32323200 #32323200 #5c5c5c
-          }
-      }
-
       # Force workspace 1 to be the default
       workspace 1
 
@@ -731,5 +705,16 @@ in
 
       include /etc/sway/config.d/*
     '';
+  };
+  
+  fonts.fontconfig.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+    config.common.default = "*";
   };
 }
