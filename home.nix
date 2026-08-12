@@ -17,7 +17,6 @@
   # and generally shouldn't be bumped casually - same rule as system.stateVersion.
   home.stateVersion = "26.05";
 
-
   # Let home-manager manage itself
   programs.home-manager.enable = true;
 

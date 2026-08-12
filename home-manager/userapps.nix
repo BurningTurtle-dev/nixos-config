@@ -31,5 +31,6 @@
     zathura
     zathuraPkgs.zathura_pdf_mupdf
     file-roller
+    xournalpp
   ];
 }
