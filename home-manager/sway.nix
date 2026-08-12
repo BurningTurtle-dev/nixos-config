@@ -497,6 +497,7 @@ in
   ###########################################################################
   wayland.windowManager.sway = {
     enable = true;
+    #checkConfig = false;
 
     wrapperFeatures.gtk = true;
 
@@ -539,8 +540,9 @@ in
           tap = "enabled";
           tap_button_map = "lrm";
         };
-        "1386:891:Wacom_One_by_Wacom_M_Pen" = {
-          map_to_output = "DP-6";
+	"1386:891:Wacom_One_by_Wacom_M_Pen" = {
+          #map_to_output = "DP-6";
+          events = "enabled";
         };
       };
 
@@ -722,6 +724,10 @@ in
 
       # Force workspace 1 to be the default
       workspace 1
+
+      # --- Wacom tablet configuration ---
+      #input "1386:891:Wacom_One_by_Wacom_M_Pen" map_to_output DP-6
+      #input "1386:891:Wacom_One_by_Wacom_M_Pen" events enabled
 
       include /etc/sway/config.d/*
     '';

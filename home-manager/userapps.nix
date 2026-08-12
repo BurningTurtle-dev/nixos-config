@@ -12,7 +12,6 @@
     brave-origin
     signal-desktop
     arduino-ide
-    kdePackages.ark
     calibre
     wdisplays
     gammastep
@@ -20,7 +19,6 @@
     libreoffice
     mpv
     vlc
-    kdePackages.okular
     qbittorrent
     tailscale
     unityhub
@@ -30,6 +28,8 @@
     gparted
     seafile-client
     gedit
-    geany
+    zathura
+    zathuraPkgs.zathura_pdf_mupdf
+    file-roller
   ];
 }
