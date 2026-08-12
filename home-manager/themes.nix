@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     material-black-colors
     kdePackages.qt6ct
-    #adwaita-qt6
     kdePackages.breeze
   ];
 
@@ -40,13 +39,23 @@
       name = "Breeze";
       package = pkgs.kdePackages.breeze-gtk;
     };
+    gtk3.extraConfig = {
+      "gtk-application-prefer-dark-theme" = true;
+    };
+
+    gtk4.extraConfig = {
+      "gtk-theme-name" = "Adwaita-dark";
+      # Optionally also force dark preference:
+      "gtk-application-prefer-dark-theme" = true;
+    };
   };
 
   qt = {
     enable = true;
-  };
-
-  home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt6ct";
+    platformTheme.name = "qtct";
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt6;
+    };
   };
 }

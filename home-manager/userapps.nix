@@ -9,7 +9,6 @@
     seafile-client
     jstest-gtk
     qalculate-gtk
-    texstudio
     brave-origin
     signal-desktop
     arduino-ide
@@ -17,7 +16,6 @@
     calibre
     wdisplays
     gammastep
-    kdePackages.kate
     krita
     libreoffice
     mpv
@@ -30,5 +28,8 @@
     fastfetch
     hyprpolkitagent
     gparted
+    seafile-client
+    gedit
+    geany
   ];
 }

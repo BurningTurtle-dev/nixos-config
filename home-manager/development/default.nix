@@ -5,5 +5,6 @@
   imports = [
     ./c.nix
     ./python.nix
+    ./latex.nix
   ];
 }
