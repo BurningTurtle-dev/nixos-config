@@ -28,7 +28,6 @@ in
     jq
     cmus
     bluetuith
-    kdePackages.kdeconnect-kde
     fish
     swaylock
   ];
@@ -573,7 +572,6 @@ in
         { command = "cliphist wipe"; } # wipes history on startup
         { command = "wl-paste --type text --watch cliphist store"; }
         { command = "wl-paste --type image --watch cliphist store"; }
-        { command = "kdeconnect-indicator"; }
 	{ command = "systemctl --user start hyprpolkitagent"; }
       ];
 

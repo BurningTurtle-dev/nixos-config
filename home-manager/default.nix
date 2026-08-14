@@ -12,6 +12,7 @@
     ./librewolf.nix
     ./nixvim.nix
     ./flatpak.nix
+    ./superfile.nix
   ];
 
   xdg.mimeApps = {
