@@ -9,5 +9,6 @@
     ./flatpak.nix
     ./other.nix
     ./bluetooth.nix
+    ./docker.nix
   ];
 }
