@@ -8,5 +8,6 @@
     ./displaymanager.nix
     ./flatpak.nix
     ./other.nix
+    ./bluetooth.nix
   ];
 }
