@@ -5,6 +5,7 @@
   environment.variables = {
     HARDWARE = "hp";
     EDITOR = "nvim";
+    SOPS_AGE_SSH_PRIVATE_KEY_FILE="/etc/ssh/ssh_host_ed25519_key";
   };
 
   home-manager.users.burningturtle = {
@@ -16,6 +17,13 @@
       ./hardware-configuration.nix
       ../../modules/default.nix
     ];
+
+  sops = {
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    age.keyFile = "/var/lib/sops-nix/key.txt";
+
+    secrets."psk-KabelBox-4F28" = {};
+  };
 
   boot.loader = {
     grub = {

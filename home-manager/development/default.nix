@@ -6,5 +6,6 @@
     ./c.nix
     ./python.nix
     ./latex.nix
+    ./rust.nix
   ];
 }
