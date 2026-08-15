@@ -21,7 +21,6 @@
     vlc
     qbittorrent
     tailscale
-    unityhub
     zoom-us
     fastfetch
     gparted

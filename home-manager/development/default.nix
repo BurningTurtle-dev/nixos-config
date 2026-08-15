@@ -7,5 +7,6 @@
     ./python.nix
     ./latex.nix
     ./rust.nix
+    ./unity.nix
   ];
 }
