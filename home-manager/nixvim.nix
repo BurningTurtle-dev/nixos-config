@@ -12,10 +12,15 @@
     
     opts = {
       number = true;
-      smartindent = true;
-      autoindent = true;
-      expandtab = true;
+      smartindent = false;
+      autoindent = false;
+      expandtab = false;
     };
+
+    extraPlugins = with pkgs.vimPlugins; [
+      netrw-nvim
+    ];
+
 
     plugins = {
       transparent = {
@@ -51,6 +56,11 @@
         enable = true;
         autoLoad = true;
       };
+
+      lualine = {
+        enable = true;
+      };
+
 
       lspconfig = {
         enable = true;
