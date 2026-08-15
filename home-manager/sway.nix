@@ -2,17 +2,12 @@
 { config, pkgs, ... }:
 
 let
-  # Make wallpaper available in the Nix store
   wallpaper = pkgs.runCommand "wallpaper-1716822934568753" {} ''
     mkdir -p $out
     cp ${./../wallpapers/1716822934568753.jpg} $out/wallpaper.jpg
   '';
 in
 {
-
-  ###########################################################################
-  ## Packages used by keybindings / autostart / scripts
-  ###########################################################################
   home.packages = with pkgs; [
     alacritty
     rofi
@@ -496,7 +491,6 @@ in
   ###########################################################################
   wayland.windowManager.sway = {
     enable = true;
-    #checkConfig = false;
 
     wrapperFeatures.gtk = true;
 
@@ -540,7 +534,6 @@ in
           tap_button_map = "lrm";
         };
 	"1386:891:Wacom_One_by_Wacom_M_Pen" = {
-          #map_to_output = "DP-6";
           events = "enabled";
         };
       };
@@ -572,7 +565,6 @@ in
         { command = "cliphist wipe"; } # wipes history on startup
         { command = "wl-paste --type text --watch cliphist store"; }
         { command = "wl-paste --type image --watch cliphist store"; }
-	{ command = "systemctl --user start hyprpolkitagent"; }
       ];
 
       keybindings = let

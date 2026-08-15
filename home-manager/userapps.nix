@@ -24,7 +24,6 @@
     unityhub
     zoom-us
     fastfetch
-    hyprpolkitagent
     gparted
     seafile-client
     gedit
