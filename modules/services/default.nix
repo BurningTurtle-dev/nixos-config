@@ -10,6 +10,6 @@
     ./other.nix
     ./bluetooth.nix
     ./docker.nix
-    ./networkmanager.nix
+    ./networkmanager/default.nix
   ];
 }

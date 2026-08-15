@@ -2,25 +2,25 @@
 { config, lib, pkgs, ... }:
 
 {
-  sops.secrets."wifi/KabelBox-4F28" = { };
+  sops.secrets."wifi/ET-CH-7" = { };
 
-  sops.templates."KabelBox-4F28.nmconnection" = {
+  sops.templates."ET-CH-7.nmconnection" = {
     content = ''
       [connection]
-      id=KabelBox-4F28
-      uuid=8f14e45f-ceea-467e-bd06-9d4a1f0a2b3c
+      id=ET-CH-7
+      uuid=ec43193c-1d01-4dfe-9cce-7e7c4f47b035
       type=wifi
       permissions=
 
       [wifi]
       mode=infrastructure
-      ssid=KabelBox-4F28
+      ssid=ET-CH-7
       mac-address-blacklist=
 
       [wifi-security]
       auth-alg=open
       key-mgmt=wpa-psk
-      psk=${config.sops.placeholder."wifi/KabelBox-4F28"}
+      psk=${config.sops.placeholder."wifi/ET-CH-7"}
 
       [ipv4]
       method=auto
@@ -31,10 +31,9 @@
       addr-gen-mode=stable-privacy
       dns-search=
     '';
-    path = "/etc/NetworkManager/system-connections/KabelBox-4F28.nmconnection";
+    path = "/etc/NetworkManager/system-connections/ET-CH-7.nmconnection";
     owner = "root";
     group = "root";
     mode = "0600";
-    restartUnits = [ "NetworkManager.service" ];
   };
 }
