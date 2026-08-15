@@ -32,5 +32,6 @@
     zathuraPkgs.zathura_pdf_mupdf
     file-roller
     xournalpp
+    jellyfin-desktop
   ];
 }

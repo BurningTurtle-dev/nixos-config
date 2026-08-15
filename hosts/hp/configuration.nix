@@ -22,7 +22,7 @@
     defaultSopsFile = ../../secrets/secrets.yaml;
     age.keyFile = "/var/lib/sops-nix/key.txt";
 
-    secrets."psk-KabelBox-4F28" = {};
+    secrets."wifi/KabelBox-4F28" = {};
   };
 
   boot.loader = {
@@ -46,6 +46,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  systemd.services.NetworkManager = {
+    after = [ "sops-nix.service" ];
+    wants = [ "sops-nix.service" ];
+  };
 
   # Time zone.
   time.timeZone = "Europe/Berlin";

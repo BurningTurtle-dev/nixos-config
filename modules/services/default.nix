@@ -10,5 +10,6 @@
     ./other.nix
     ./bluetooth.nix
     ./docker.nix
+    ./networkmanager.nix
   ];
 }

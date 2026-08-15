@@ -9,19 +9,17 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixvim = { url = "github:nix-community/nixvim"; };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    superfile.url = "github:yorukot/superfile";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, superfile, sops-nix,... }:
+  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, sops-nix,... }:
     let
       system = "x86_64-linux";
     in {
       nixosConfigurations = {
         hp = nixpkgs.lib.nixosSystem {
           inherit system;
-	  specialArgs = { inherit superfile; };
           modules = [
             ./hosts/hp/configuration.nix
 	    sops-nix.nixosModules.sops
