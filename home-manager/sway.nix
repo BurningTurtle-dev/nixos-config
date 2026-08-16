@@ -25,6 +25,7 @@ in
     bluetuith
     fish
     swaylock
+    nerd-fonts.adwaita-mono
   ];
 
   ###########################################################################
@@ -85,7 +86,7 @@ in
 
       backlight = {
         format = "{percent}% {icon}";
-        format-icons = [ "" ];
+        format-icons = [ "󰃟" ];
       };
 
       battery = {
@@ -98,7 +99,7 @@ in
         format-charging = "{capacity}% ";
         format-plugged = "{capacity}% ";
         format-alt = "{time} {icon}";
-        format-icons = [ "" "" "" "" "" ];
+        format-icons = [ "" "" "" "" "" ];
       };
 
       "battery#bat2" = {
@@ -106,41 +107,41 @@ in
       };
 
       network = {
-        format-wifi = "{essid} ({signalStrength}%) ";
-        format-ethernet = "{ipaddr}/{cidr} ";
-        tooltip-format = "{ifname} via {gwaddr} ";
-        format-linked = "{ifname} (No IP) ";
-        format-disconnected = "Disconnected ⚠";
+        format-wifi = "{essid} ({signalStrength}%) 󰖩";
+        format-ethernet = "{ipaddr}/{cidr} ";
+        tooltip-format = "{ifname} via {gwaddr} ";
+        format-linked = "{ifname} (No IP) ";
+        format-disconnected = "Disconnected 󱚵";
         format-alt = "{ifname}: {ipaddr}/{cidr}";
       };
 
       pulseaudio = {
         format = "{volume}% {icon}";
-        format-bluetooth = "{volume}% {icon} {format_source}";
-        format-bluetooth-muted = " {icon} {format_source}";
-        format-muted = " {format_source}";
-        format-source = "{volume}% ";
-        format-source-muted = "";
+        format-bluetooth = "{volume}% {icon}󰂯 {format_source}";
+        format-bluetooth-muted = " {icon}󰂲 {format_source}";
+        format-muted = "󰝟 {format_source}";
+        format-source = "{volume}% ";
+        format-source-muted = "󰝟";
         format-icons = {
-          headphone = "";
-          hands-free = "";
-          headset = "";
-          phone = "";
-          portable = "";
-          car = "";
-          default = [ "" "" "" ];
+          headphone = "";
+          hands-free = "";
+          headset = "";
+          phone = "";
+          portable = "";
+          car = "";
+          default = [ "󰕿" "󰖀" "󰕾" ];
         };
         on-click = "pavucontrol";
       };
     };
-    };
+  };
   
 
 
     style = ''
       * {
           /* `otf-font-awesome` is required to be installed for icons */
-          font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+          font-family: "AdwaitaMono Nerd Font Propo", Roboto, Helvetica, Arial, sans-serif;
           font-size: 13px;
           border-radius: 10px;
       }
@@ -722,6 +723,8 @@ in
       include /etc/sway/config.d/*
     '';
   };
+  
+  fonts.fontconfig.enable = true;
 
   xdg.portal = {
     enable = true;

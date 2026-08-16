@@ -69,7 +69,16 @@
     };
 
     lsp.servers = {
-      clangd.enable = true;
+      clangd.enable = true;         # C
+      nixd.enable = true;           # Nix
+      basedpyright.enable = true;   # Python
+      bashls.enable = true;         # Bash
+      lua_ls.enable = true;         # Lua
+      jsonls.enable = true;         # JSON
+      yamlls.enable = true;         # YAML
+      taplo.enable = true;          # TOML
+      lemminx.enable = true;        # XML
+      marksman.enable = true;       # Markdown
     };
 
     extraConfigLua = ''
