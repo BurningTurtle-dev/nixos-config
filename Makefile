@@ -6,7 +6,6 @@ build:
 	git add .
 	@[ -n "$(HARDWARE)" ] || { echo "HARDWARE env var not set. Canceling build!!!"; exit 1; }
 	nixos-rebuild switch --flake .#$(HARDWARE)
-	systemctl restart NetworkManager
 
 upgrade:
 	nix flake update

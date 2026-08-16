@@ -1,9 +1,11 @@
 
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   programs.alacritty = {
     enable = true;
+
+    #theme = "gotham";
     
     settings = {
       window = {

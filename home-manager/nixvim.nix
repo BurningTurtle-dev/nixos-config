@@ -81,13 +81,46 @@
       marksman.enable = true;       # Markdown
     };
 
+    keymaps = [
+      {
+         mode = "n";
+         key = "<leader>d";
+         action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+         options = {
+           desc = "Show diagnostic";
+         };
+      }
+      {
+        mode = "n";
+        key = "<leader>f";
+        action = "<cmd>lua _G.next_fix()<CR>";
+        options = {
+          desc = "Suggest fix for next problem";
+        };
+      }
+    
+    ];
+
+    globals = {
+      mapleader = " ";
+    };
+
     extraConfigLua = ''
+
+      -- Function: Go to next diagnostic, then open code actions
+      function _G.next_fix()
+        local success = vim.diagnostic.jump({count = 1})
+        if success then
+          vim.lsp.buf.code_action()
+        end
+      end
 
       vim.api.nvim_create_autocmd("VimEnter", {
         callback = function()
           vim.cmd("TransparentEnable")
         end,
       })
+
     '';
   };
 }
