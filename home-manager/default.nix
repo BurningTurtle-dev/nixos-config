@@ -4,6 +4,7 @@
 {
   imports = [
     ./rofi/rofi.nix
+    ./custom_scripts/default.nix
     ./development/default.nix
     ./sway.nix
     ./alacritty.nix
