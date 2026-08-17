@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 
 {
   sops.secrets."wifi/UNI/email" = { };

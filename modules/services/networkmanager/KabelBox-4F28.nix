@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 
 {
   sops.secrets."wifi/KabelBox-4F28" = { };

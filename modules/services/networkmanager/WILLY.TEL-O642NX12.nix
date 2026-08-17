@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 
 {
   sops.secrets."wifi/WILLY.TEL-O642NX12" = { };

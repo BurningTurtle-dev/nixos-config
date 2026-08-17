@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 
 {
   sops.secrets."wifi/o2-WLAN95" = { };

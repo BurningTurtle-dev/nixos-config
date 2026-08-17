@@ -1,5 +1,5 @@
 
-{ lib, config, pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -13,6 +13,7 @@
     ./librewolf.nix
     ./nixvim.nix
     ./flatpak.nix
+    ./tmux.nix
   ];
 
   xdg.mimeApps = {

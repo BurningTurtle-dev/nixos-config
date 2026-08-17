@@ -1,5 +1,6 @@
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
+
 let
   tex = (pkgs.texliveBasic.withPackages (
     ps: with ps; [

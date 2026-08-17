@@ -1,5 +1,5 @@
 
-{ lib, config, pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -8,5 +8,6 @@
     ./latex.nix
     ./rust.nix
     ./unity.nix
+    ./reverse_engineering.nix
   ];
 }
