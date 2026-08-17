@@ -10,5 +10,6 @@
     ./bluetooth.nix
     ./docker.nix
     ./networkmanager/default.nix
+    ./flatpak.nix
   ];
 }

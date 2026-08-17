@@ -7,5 +7,6 @@
     ./browser.nix
     ./sway.nix
     ./localsend.nix
+    ./steam.nix
   ];
 }

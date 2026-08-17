@@ -16,6 +16,7 @@
     home-manager
     age
     sops
+    age-plugin-yubikey
   ];
 }
 

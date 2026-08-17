@@ -10,6 +10,7 @@
   environment.variables = {
     EDITOR = "nvim";
     SOPS_AGE_SSH_PRIVATE_KEY_FILE="/etc/ssh/ssh_host_ed25519_key";
+    SOPS_AGE_KEY_FILE="/home/burningturtle/.config/sops/age/yubikey-identity-19741002.txt";
   };
   
   sops = {

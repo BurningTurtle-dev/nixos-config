@@ -12,8 +12,8 @@
     ./userapps.nix
     ./librewolf.nix
     ./nixvim.nix
-    ./flatpak.nix
     ./tmux.nix
+    ./flatpak.nix
   ];
 
   xdg.mimeApps = {
