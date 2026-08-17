@@ -12,7 +12,7 @@
     ./userapps.nix
     ./librewolf.nix
     ./nixvim.nix
-    ./tmux.nix
+    #./tmux.nix
     ./flatpak.nix
   ];
 
