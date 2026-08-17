@@ -9,7 +9,6 @@
     seafile-client
     jstest-gtk
     qalculate-gtk
-    brave-origin
     signal-desktop
     arduino-ide
     calibre
@@ -31,5 +30,6 @@
     file-roller
     xournalpp
     jellyfin-desktop
+    imv
   ];
 }

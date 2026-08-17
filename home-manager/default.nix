@@ -25,6 +25,9 @@
       "x-scheme-handler/about" = "librewolf.desktop";
       "x-scheme-handler/unknown" = "librewolf.desktop";
       "text/plain" = "org.gnome.gedit.desktop";
+      "image/png" = "imv.desktop";
+      "image/jpeg" = "imv.desktop";
+      "image/svg+xml" = "imv.desktop";
     };
   };
 }

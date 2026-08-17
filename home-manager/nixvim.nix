@@ -98,6 +98,15 @@
           desc = "Suggest fix for next problem";
         };
       }
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = ":Explore<CR>";
+        options = {
+          desc = "Open netrw explorer";
+        };
+      }
+
     
     ];
 
