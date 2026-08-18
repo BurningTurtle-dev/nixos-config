@@ -19,12 +19,4 @@
     ];
   
   networking.hostName = "nixos"; # Define your hostname.
-
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."burningturtle" = {
-    isNormalUser = true;
-    description = "BurningTurtle";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
-  };
-}
+  }

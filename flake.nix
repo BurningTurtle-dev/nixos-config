@@ -14,7 +14,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, sops-nix,... }:
+  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, sops-nix, ... }:
     let
       system = "x86_64-linux";
     in {

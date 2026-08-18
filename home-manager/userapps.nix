@@ -25,11 +25,10 @@
     gparted
     seafile-client
     gedit
-    zathura
-    zathuraPkgs.zathura_pdf_mupdf
     file-roller
     xournalpp
     jellyfin-desktop
     imv
+    yt-dlp
   ];
 }

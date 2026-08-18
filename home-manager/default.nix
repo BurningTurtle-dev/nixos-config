@@ -14,6 +14,7 @@
     ./nixvim.nix
     #./tmux.nix
     ./flatpak.nix
+    ./zathura.nix
   ];
 
   xdg.mimeApps = {
@@ -28,6 +29,7 @@
       "image/png" = "imv.desktop";
       "image/jpeg" = "imv.desktop";
       "image/svg+xml" = "imv.desktop";
+      "application/pdf" = "org.pwmt.zathura.desktop";
     };
   };
 }

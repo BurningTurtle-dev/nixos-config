@@ -16,7 +16,15 @@
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
     age.keyFile = "/var/lib/sops-nix/key.txt";
-  }; 
+  };
+  
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users."burningturtle" = {
+    isNormalUser = true;
+    description = "BurningTurtle";
+    extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
+  };
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
