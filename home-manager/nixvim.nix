@@ -12,9 +12,8 @@
     
     opts = {
       number = true;
-      smartindent = false;
-      autoindent = false;
-      expandtab = false;
+      tabstop = 4;
+      shiftwidth = 4;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
@@ -85,7 +84,7 @@
       {
          mode = "n";
          key = "<leader>d";
-         action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+         action = "<cmd>lua _G.next_problem()<CR>";
          options = {
            desc = "Show diagnostic";
          };
@@ -124,11 +123,29 @@
         end
       end
 
+      -- Function: Go to next problem
+      function _G.next_problem()
+      --  local success = vim.diagnostic.jump({count = 1})
+      --  if success then
+          vim.diagnostic.open_float()
+      --  end
+      end
+
+
       vim.api.nvim_create_autocmd("VimEnter", {
         callback = function()
           vim.cmd("TransparentEnable")
         end,
       })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "c",
+        callback = function()
+          vim.opt_local.tabstop = 4
+          vim.opt_local.shiftwidth = 4
+          vim.opt_local.expandtab = true   -- use spaces
+        end,
+})
 
     '';
   };

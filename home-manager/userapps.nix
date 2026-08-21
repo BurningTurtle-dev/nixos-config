@@ -7,7 +7,6 @@
     obsidian
     openscad
     seafile-client
-    jstest-gtk
     qalculate-gtk
     signal-desktop
     arduino-ide
@@ -19,8 +18,8 @@
     mpv
     vlc
     qbittorrent
-    tailscale
     zoom-us
+    tailscale-systray
     fastfetch
     gparted
     seafile-client
