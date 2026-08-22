@@ -15,6 +15,7 @@
     #./tmux.nix
     ./flatpak.nix
     ./zathura.nix
+    ./fish.nix
   ];
 
   xdg.mimeApps = {

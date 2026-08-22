@@ -21,24 +21,6 @@
   # Let home-manager manage itself
   programs.home-manager.enable = true;
 
-  # Fish shell config (aliases, greeting, etc.)
-  programs.fish = {
-    enable = true;
-
-    shellAliases = {
-      ll = "ls -la";
-      gs = "git status";
-    };
-
-    shellInit = ''
-      set -g fish_greeting ""
-    '';
-
-    # interactiveShellInit = ''
-    #   # anything you'd normally put in config.fish
-    # '';
-  };
-
   programs.git = {
     enable = true;
     settings = {
