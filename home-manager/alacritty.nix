@@ -5,7 +5,7 @@
   programs.alacritty = {
     enable = true;
 
-    #theme = "gotham";
+    theme = "tokyo_night";
     
     settings = {
       window = {

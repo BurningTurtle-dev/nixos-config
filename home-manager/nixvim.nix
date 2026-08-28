@@ -26,7 +26,7 @@
       };
     };
 
-    colorschemes.gruvbox.enable = true;
+    colorschemes.tokyonight.enable = true;
 
     extraPlugins = with pkgs.vimPlugins; [ netrw-nvim ];
 
