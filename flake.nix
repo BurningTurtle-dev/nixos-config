@@ -12,9 +12,10 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, sops-nix, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, sops-nix, nix-vscode-extensions, ... }:
     let
       system = "x86_64-linux";
     in {

@@ -16,6 +16,7 @@
     ./flatpak.nix
     ./zathura.nix
     ./fish.nix
+    ./codium.nix
   ];
 
   xdg.mimeApps = {

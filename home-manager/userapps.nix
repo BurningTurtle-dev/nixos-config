@@ -3,7 +3,6 @@
 
 {
   home.packages = with pkgs; [
-    vscodium
     obsidian
     openscad
     seafile-client
@@ -30,5 +29,6 @@
     imv
     yt-dlp
     wiremix
+    devenv
   ];
 }
