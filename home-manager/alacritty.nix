@@ -11,7 +11,7 @@
       window = {
         decorations = "None";
         dynamic_padding = true;
-        opacity = 0.5;
+        opacity = 0.7;
         dynamic_title = true;
       };
       

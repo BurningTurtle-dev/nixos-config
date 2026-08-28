@@ -72,6 +72,14 @@
         enable = true;
       };
 
+      bufferline = {
+        enable = true;
+      };
+
+      yazi = {
+        enable = true;
+      };
+
       cmp = {
         enable = true;
         settings = {
@@ -145,7 +153,8 @@
       {
         mode = "n";
         key = "<leader>e";
-        action = ":Explore<CR>";
+        #action = ":Explore<CR>";
+        action = "<cmd>Yazi<cr>";
         options = {
           desc = "Open netrw explorer";
         };
