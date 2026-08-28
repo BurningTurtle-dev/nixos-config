@@ -1,5 +1,5 @@
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   wallpaper = pkgs.runCommand "wallpaper-1716822934568753" {} ''
@@ -509,7 +509,7 @@ in
 
       fonts = {
         names = [ "Roboto Condensed Bold" ];
-        size = 1.0;
+        size = lib.mkForce 1.0;
       };
 
       window = {
@@ -521,11 +521,11 @@ in
 
       colors = {
         focused = {
-          border = "#81f7ff";
-          background = "#81f7ff";
-          text = "#81f7ff";
-          indicator = "#81f7ff";
-          childBorder = "#81f7ff";
+          border = lib.mkForce "#81f7ff";
+          background = lib.mkForce "#81f7ff";
+          text = lib.mkForce "#81f7ff";
+          indicator = lib.mkForce "#81f7ff";
+          childBorder = lib.mkForce "#81f7ff";
         };
       };
 

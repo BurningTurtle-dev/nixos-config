@@ -8,7 +8,7 @@
     ./development/default.nix
     ./sway.nix
     ./alacritty.nix
-    ./themes.nix
+    #./themes.nix
     ./userapps.nix
     ./librewolf.nix
     ./nixvim.nix

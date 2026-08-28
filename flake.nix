@@ -13,9 +13,13 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, sops-nix, nix-vscode-extensions, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, sops-nix, nix-vscode-extensions, stylix, ... }:
     let
       system = "x86_64-linux";
     in {
@@ -25,6 +29,7 @@
           modules = [
             ./hosts/hp/configuration.nix
 	    sops-nix.nixosModules.sops
+            stylix.nixosModules.stylix
 
             home-manager.nixosModules.home-manager
             {

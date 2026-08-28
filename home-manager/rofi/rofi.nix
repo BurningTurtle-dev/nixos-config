@@ -1,14 +1,11 @@
 
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
-let
-  theme = ./custom.rasi;
-in
 {
   programs.rofi = {
     enable = true;
-    theme = theme;
-    font = "sans-serif";
+    theme = lib.mkForce ./custom.rasi;
+    font = lib.mkForce "sans-serif";
     package = pkgs.rofi;
     modes = [
       "drun"
@@ -18,7 +15,7 @@ in
     ];
     extraConfig = {
       show-icons = true;
-      icon-theme = "Adwaita";
+      icon-theme = lib.mkForce "Adwaita";
     };
   };
 }
