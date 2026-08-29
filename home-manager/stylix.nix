@@ -2,7 +2,7 @@
 
 {
   stylix.targets = {
-    sway.enable = false;
+    #sway.enable = false;
     waybar.enable = false;
     firefox.enable = false;
     librewolf.enable = false;

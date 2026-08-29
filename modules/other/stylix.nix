@@ -38,6 +38,12 @@
       };
     };
 
+    cursor = {
+      name = "breeze_cursors";
+      package = pkgs.kdePackages.breeze;
+      size = 20;
+    };
+
     targets = {
       grub.enable = false;
     };
