@@ -17,9 +17,13 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, sops-nix, nix-vscode-extensions, stylix, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, sops-nix, nix-vscode-extensions, stylix, auto-cpufreq, ... }:
     let
       system = "x86_64-linux";
     in {
@@ -30,6 +34,7 @@
             ./hosts/hp/configuration.nix
 	    sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
+            auto-cpufreq.nixosModules.default
 
             home-manager.nixosModules.home-manager
             {

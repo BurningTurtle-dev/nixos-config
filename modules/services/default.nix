@@ -12,5 +12,6 @@
     ./networkmanager/default.nix
     ./flatpak.nix
     ./udev.nix
+    ./powermanagement.nix
   ];
 }
