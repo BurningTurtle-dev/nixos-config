@@ -17,6 +17,7 @@
     ./zathura.nix
     ./fish.nix
     ./codium.nix
+    ./stylix.nix
   ];
 
   xdg.mimeApps = {

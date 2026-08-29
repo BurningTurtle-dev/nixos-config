@@ -37,5 +37,9 @@
         popups = 9;
       };
     };
+
+    targets = {
+      grub.enable = false;
+    };
   };
 }
