@@ -16,7 +16,8 @@
     ./flatpak.nix
     ./zathura.nix
     ./fish.nix
-    ./codium.nix
+    #./codium.nix
+    ./vscode_unfree.nix
     ./stylix.nix
   ];
 

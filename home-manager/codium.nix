@@ -9,13 +9,6 @@
         extensions = with pkgs.vscode-extensions; [
         ];
       };
-
-      platformio = {
-        extensions = with pkgs.vscode-extensions; [
-          platformio.platformio-vscode-ide
-          ms-vscode.cpptools
-        ];
-      };
     };
   };
 }

@@ -1,4 +1,3 @@
-
 { config, pkgs, ... }:
 
 {
@@ -26,9 +25,9 @@
       };
     };
 
-    colorschemes.tokyonight.enable = true;
+    extraPlugins = with pkgs.vimPlugins; [
 
-    extraPlugins = with pkgs.vimPlugins; [ netrw-nvim ];
+    ];
 
     plugins = {
       transparent = {
@@ -133,39 +132,70 @@
       inlayHints.enable = true;
     };
 
-    keymaps = [
+     keymaps = [
+      # Your existing keymaps (like <leader>d, <leader>f, etc.)
       {
         mode = "n";
         key = "<leader>d";
         action = "<cmd>lua _G.next_problem()<CR>";
-        options = {
-          desc = "Show diagnostic";
-        };
+        options.desc = "Show diagnostic";
       }
+
       {
         mode = "n";
         key = "<leader>f";
         action = "<cmd>lua _G.next_fix()<CR>";
-        options = {
-          desc = "Suggest fix for next problem";
-        };
+        options.desc = "Suggest fix for next problem";
       }
+
       {
         mode = "n";
         key = "<leader>e";
-        #action = ":Explore<CR>";
         action = "<cmd>Yazi<cr>";
-        options = {
-          desc = "Open netrw explorer";
-        };
+        options.desc = "Open netrw explorer";
+      }
+
+    ]
+    ++ (builtins.map (i: {
+      mode = "n";
+      key = "<leader>${toString i}";
+      action = "<cmd>BufferLineGoToBuffer ${toString i}<CR>";
+      options.desc = "Go to buffer ${toString i}";
+    }) (builtins.genList (i: i + 1) 9))   # generates 1..9
+    ++ [
+
+      {
+        mode = "n";
+        key = "<leader>0";
+        action = "<cmd>BufferLineGoToBuffer 10<CR>";
+        options.desc = "Go to buffer 10";
       }
     ];
+
 
     globals = {
       mapleader = " ";
     };
 
     extraConfigLua = ''
+      -- :q closes the current buffer and switches to another open one,
+      -- only quitting Neovim entirely when this is the last listed buffer.
+      vim.api.nvim_create_user_command("Q", function(opts)
+        local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+        if #buffers > 1 then
+          vim.cmd(opts.bang and "bp | bd! #" or "bp | bd #")
+        else
+          vim.cmd(opts.bang and "q!" or "q")
+        end
+      end, { bang = true })
+
+      -- Only intercept when the full command line is exactly "q" / "q!",
+      -- so things like ":qa", ":50q", ":wq" are left untouched.
+      vim.cmd([[
+        cnoreabbrev <expr> q  (getcmdtype() == ':' && getcmdline() == 'q')  ? 'Q'  : 'q'
+        cnoreabbrev <expr> q! (getcmdtype() == ':' && getcmdline() == 'q!') ? 'Q!' : 'q!'
+      ]])
+
       function _G.next_fix()
         local success = vim.diagnostic.jump({ count = 1 })
         if success then
