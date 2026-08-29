@@ -8,7 +8,6 @@
     seafile-client
     qalculate-gtk
     signal-desktop
-    arduino-ide
     calibre
     wdisplays
     gammastep
@@ -17,7 +16,6 @@
     mpv
     vlc
     qbittorrent
-    zoom-us
     tailscale-systray
     fastfetch
     gparted

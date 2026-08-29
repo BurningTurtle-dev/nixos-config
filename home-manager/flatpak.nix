@@ -7,6 +7,7 @@
       "org.pvermeer.WebAppHub"
       #"com.yubico.yubioath"
       "com.discordapp.Discord"
+      "us.zoom.Zoom"
     ];
   };
 }

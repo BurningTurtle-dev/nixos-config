@@ -1,4 +1,3 @@
-
 { pkgs, ... }:
 
 {
@@ -17,6 +16,7 @@
     age
     sops
     age-plugin-yubikey
+    yazi
   ];
 }
 
