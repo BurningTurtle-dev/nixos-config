@@ -28,5 +28,6 @@
     yt-dlp
     wiremix
     devenv
+    speedtest-cli
   ];
 }

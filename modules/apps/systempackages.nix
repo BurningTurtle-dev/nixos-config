@@ -10,13 +10,13 @@
     p7zip
     killall
     gnumake
-    speedtest-cli
     tree
     home-manager
     age
     sops
     age-plugin-yubikey
     yazi
+    nix-forecast
   ];
 }
 
