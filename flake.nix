@@ -24,10 +24,10 @@
       system = "x86_64-linux";
     in {
       nixosConfigurations = {
-        hp = nixpkgs.lib.nixosSystem {
+        thinkcentre = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/hp/configuration.nix
+            ./hosts/thinkcentre/configuration.nix
 	    sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
 
@@ -36,7 +36,7 @@
               nixpkgs.overlays = [ nur.overlays.default ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.burningturtle = {
+              home-manager.users.user = {
                 imports = [
                   ./home.nix
                   nixvim.homeModules.nixvim
