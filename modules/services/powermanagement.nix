@@ -1,26 +1,28 @@
 { ... }:
 
 {
-  programs.auto-cpufreq.enable = true;
-
-  programs.auto-cpufreq.settings = {
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-
-    battery = {
-      governor = "performance";
-      #governor = "powersave";
-      turbo = "auto";
-    };
-  };
-
   services = {
     logind.settings.Login = {
       HandleLidSwitch = "suspend";
       HandleLidSwitchExternalPower = "ignore";
       HandleLidSwitchDocked = "ignore";
+    };
+
+    auto-cpufreq = {
+      enable = true;
+
+      settings = {
+        charger = {
+          governor = "performance";
+          turbo = "auto";
+        };
+
+        battery = {
+          governor = "performance";
+          #governor = "powersave";
+          turbo = "auto";
+        };
+      };
     };
 
     tlp = {

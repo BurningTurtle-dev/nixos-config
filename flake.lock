@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "auto-cpufreq": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1787995368,
-        "narHash": "sha256-H96PkSHH+DC3Cm3RCfFyPqkUWtDnN1YBkQB5wsWySjU=",
-        "owner": "AdnanHodzic",
-        "repo": "auto-cpufreq",
-        "rev": "6f3f8adbd2b62fc15f62e03a8bcaf8c57d6d77d7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AdnanHodzic",
-        "repo": "auto-cpufreq",
-        "type": "github"
-      }
-    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -372,7 +352,6 @@
     },
     "root": {
       "inputs": {
-        "auto-cpufreq": "auto-cpufreq",
         "home-manager": "home-manager",
         "nix-flatpak": "nix-flatpak",
         "nix-vscode-extensions": "nix-vscode-extensions",
