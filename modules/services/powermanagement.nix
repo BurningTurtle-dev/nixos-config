@@ -10,12 +10,19 @@
     };
 
     battery = {
-      governor = "powersave";
+      governor = "performance";
+      #governor = "powersave";
       turbo = "auto";
     };
   };
 
   services = {
+    logind.settings.Login = {
+      HandleLidSwitch = "suspend";
+      HandleLidSwitchExternalPower = "ignore";
+      HandleLidSwitchDocked = "ignore";
+    };
+
     tlp = {
       enable = true;
 
