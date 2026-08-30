@@ -11,6 +11,9 @@ upgrade:
 	nix flake update
 	$(MAKE) build
 
+forecast:
+	nix-forecast -c "/etc/nixos#nixosConfigurations.hp" -b https://cache.nixos.org -b https://nix-community.cachix.org
+
 garbage:
 	nix-collect-garbage -d
 
