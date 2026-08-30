@@ -19,6 +19,7 @@
     #./codium.nix
     ./vscode_unfree.nix
     ./stylix.nix
+    ./firefox.nix
   ];
 
   xdg.mimeApps = {
