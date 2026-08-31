@@ -1,8 +1,22 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
-  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
+  systemd.services.jellyfin = {
+    unitConfig.RequiresMountsFor = "/mnt/storage"; # wait for storage to mount
+    environment.LIBVA_DRIVER_NAME = "iHD";
+    serviceConfig = {
+      ProtectSystem = lib.mkForce "strict";
+      ProtectHome = true;
+      PrivateTmp = true;
+      NoNewPrivileges = true;
+      ReadWritePaths = [
+        "/mnt/storage/jellyfin"
+        "/mnt/media"
+      ];
+    };
+  };
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+
 
   hardware.graphics = {
     enable = true;
@@ -16,7 +30,7 @@
   services.jellyfin = {
     enable = true;
     openFirewall = true;
-    dataDir = "/data/jellyfin/data";
-    cacheDir = "/data/jellyfin/cache";
+    dataDir = "/mnt/storage/jellyfin/data";
+    cacheDir = "/mnt/storage/jellyfin/cache";
   };
 }
