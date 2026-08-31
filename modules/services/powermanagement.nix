@@ -13,13 +13,12 @@
 
       settings = {
         charger = {
-          governor = "performance";
+          governor = "powersave";
           turbo = "auto";
         };
 
         battery = {
-          governor = "performance";
-          #governor = "powersave";
+          governor = "powersave";
           turbo = "auto";
         };
       };

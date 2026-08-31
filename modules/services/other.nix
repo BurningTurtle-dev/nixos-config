@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 
 {
   services = {
@@ -15,8 +15,8 @@
 
   # start services disabled
   systemd.user.services = {
-    tailscale = {
-      wantedBy = lib.mkForce [];
-    };
+    #tailscale = {
+    #  wantedBy = lib.mkForce [];
+    #};
   };
 }

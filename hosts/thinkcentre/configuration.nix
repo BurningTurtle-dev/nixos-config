@@ -2,11 +2,6 @@
 { ... }:
 
 {
-  
-  home-manager.users.user = {
-    my.sway.eDP_scale = "1.0";
-  };
-
   environment.variables = {
     HARDWARE = "thinkcentre";
   };
