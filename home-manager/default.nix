@@ -6,11 +6,11 @@
     #./rofi/rofi.nix
     #./custom_scripts/default.nix
     #./development/default.nix
-    ./sway.nix
-    ./alacritty.nix
+    #./sway.nix
+    #./alacritty.nix
     #./themes.nix
     #./userapps.nix
-    ./librewolf.nix
+    #./librewolf.nix
     ./nixvim.nix
     #./tmux.nix
     #./flatpak.nix

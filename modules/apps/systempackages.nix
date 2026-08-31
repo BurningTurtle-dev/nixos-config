@@ -9,7 +9,6 @@
     mc
     p7zip
     killall
-    gnumake
     tree
     home-manager
     age

@@ -4,7 +4,7 @@
 {
   imports = [
     ./systempackages.nix
-    ./sway.nix
+    #./sway.nix
     #./localsend.nix
     #./steam.nix
   ];
