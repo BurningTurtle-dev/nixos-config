@@ -6,5 +6,6 @@
     ./docker.nix
     ./powermanagement.nix
     ./ssh.nix
+    ./servers/default.nix
   ];
 }
