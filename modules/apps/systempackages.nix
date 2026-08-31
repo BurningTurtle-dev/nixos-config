@@ -16,6 +16,7 @@
     age-plugin-yubikey
     yazi
     nix-forecast
+    gnumake
   ];
 }
 

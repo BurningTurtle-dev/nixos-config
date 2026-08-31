@@ -24,6 +24,9 @@
     description = "user";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGXuigam+HnCgQkPIGLItXmsqDaRFa/N9E5aITnzCnNw burningturtle@nixos"
+    ];
   };
 
   # Use latest kernel.
