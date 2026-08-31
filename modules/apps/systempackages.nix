@@ -17,6 +17,7 @@
     yazi
     nix-forecast
     gnumake
+    cloudflared
   ];
 }
 
