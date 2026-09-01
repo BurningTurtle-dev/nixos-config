@@ -3,7 +3,7 @@
 {
   imports = [
     ./other.nix
-    ./docker.nix
+    #./docker.nix
     ./powermanagement.nix
     ./ssh.nix
     ./servers/default.nix

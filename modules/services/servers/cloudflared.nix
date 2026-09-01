@@ -15,6 +15,7 @@
         default = "http_status:404";
         ingress = {
           "vault.burningturtle.win" = "http://localhost:8222";
+          "opencloud.burningturtle.win" = "http://localhost:7218";
         };
       };
     };

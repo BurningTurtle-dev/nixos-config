@@ -3,8 +3,8 @@
   #networking.firewall.allowedTCPPorts = [ 8222 ];
 
   sops.secrets."vaultwarden-env" = {
-    sopsFile = ../../../secrets/vaultwarden.env;
-    format = "binary";
+    sopsFile = ../../../secrets/vaultwarden.json;
+    format = "json";
   };
 
   systemd.tmpfiles.rules = [
@@ -26,14 +26,14 @@
     requires = [ "var-lib-vaultwarden.mount" ];
   };
 
-  systemd.services.backup-vaultwarden = {
-    after = [ "var-lib-vaultwarden.mount" ];
-    requires = [ "var-lib-vaultwarden.mount" ];
-  };
+  #systemd.services.backup-vaultwarden = {
+  #  after = [ "var-lib-vaultwarden.mount" ];
+  #  requires = [ "var-lib-vaultwarden.mount" ];
+  #};
 
   services.vaultwarden = {
     enable = true;
-    backupDir = "/mnt/storage/vaultwarden/backup";
+    #backupDir = "/mnt/storage/vaultwarden/backup";
     environmentFile = config.sops.secrets."vaultwarden-env".path;
     config = {
       DOMAIN = "https://vault.burningturtle.win";
