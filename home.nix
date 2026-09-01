@@ -31,10 +31,6 @@
     };
   };
 
-  programs.my-librewolf = {
-    enable = true;
-  };
-
   services.udiskie = {
     enable = true;
     settings = {

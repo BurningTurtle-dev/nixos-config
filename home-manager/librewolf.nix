@@ -1,16 +1,28 @@
 
-{ config, lib, pkgs, ... }:
-with lib;
+{ pkgs, ... }:
 
-let
-  cfg = config.programs.my-librewolf;
-in {
-  options.programs.my-librewolf = {
-    enable = mkEnableOption "LibreWolf with custom extensions and settings";
+{
+  programs.librewolf = {
+    enable = true;
 
-    extensions = mkOption {
-      type = types.listOf types.package;
-      default = with pkgs.nur.repos.rycee.firefox-addons; [
+    policies = {
+      # Updates & Background Services
+      AppAutoUpdate                 = false;
+      BackgroundAppUpdate           = false;
+  
+      # UI and Behavior
+      DisplayMenuBar                = "never";
+      DontCheckDefaultBrowser       = true;
+      HardwareAcceleration          = true;
+      OfferToSaveLogins             = false;
+    };
+
+    profiles.default = {
+      id = 0;
+      name = "default";
+      isDefault = true;
+
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         noscript
         bitwarden
@@ -18,24 +30,34 @@ in {
         darkreader
         libredirect
       ];
-      description = "List of LibreWolf extensions (from NUR)";
-    };
 
-    extraSettings = mkOption {
-      type = types.attrs;
-      default = {};
-      description = "Extra about:config settings";
-    };
-  };
-
-  config = mkIf cfg.enable {
-    programs.librewolf = {
-      enable = true;
-      globalExtensions = cfg.extensions;
       settings = {
-        "browser.startup.homepage" = "about:blank";
-        "privacy.clearOnShutdown.cache" = true;
-      } // cfg.extraSettings;
+        #"browser.startup.homepage" = "about:home";
+        #"browser.search.defaultenginename" = "DuckDuckGo";
+        #"browser.newtabpage.enabled" = true;
+        #"signon.rememberSignons" = true;
+        #"browser.contentblocking.category" = "strict";
+        #"extensions.pocket.enabled" = false;
+        #"browser.toolbars.bookmarks.visibility" = "newtab";
+      };
+
+      search = {
+        force = true;
+        default = "ddg";
+        engines = {
+          "Nix Packages" = {
+            urls = [{
+              template = "https://search.nixos.org/packages";
+              params = [
+                { name = "type"; value = "packages"; }
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+            icon = "https://nixos.org/favicon.ico";
+            definedAliases = [ "@np" ];
+          };
+        };
+      };
     };
   };
 }

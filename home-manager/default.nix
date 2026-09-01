@@ -20,6 +20,7 @@
     ./vscode_unfree.nix
     ./stylix.nix
     ./firefox.nix
+    ./mc.nix
   ];
 
   xdg.mimeApps = {

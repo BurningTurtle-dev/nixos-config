@@ -7,6 +7,7 @@
     shellAliases = {
       suedit = "sudo -E nvim";
       mdkir = "mkdir";
+      naspi = "ssh user@192.168.0.16 -p 8273 -i ~/.ssh/naspi";
     };
 
     shellInit = ''
