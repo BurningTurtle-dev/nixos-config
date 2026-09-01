@@ -14,7 +14,7 @@
         credentialsFile = config.sops.secrets."cloudflared-naspi-creds".path;
         default = "http_status:404";
         ingress = {
-          "naspi.example.com" = "http://localhost:8080";
+          "vault.burningturtle.win" = "http://localhost:8222";
         };
       };
     };
