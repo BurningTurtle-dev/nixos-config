@@ -7,5 +7,6 @@
     ./powermanagement.nix
     ./ssh.nix
     ./servers/default.nix
+    ./auto-upgrade.nix
   ];
 }
