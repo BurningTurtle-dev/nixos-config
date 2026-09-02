@@ -558,12 +558,14 @@ in
         };
       };
 
+      # autostart
       startup = [
         { command = "waybar"; }
         { command = "cliphist wipe"; }
         { command = "wl-paste --type text --watch cliphist store"; }
         { command = "wl-paste --type image --watch cliphist store"; }
         { command = "localsend_app --hidden"; }
+        { command = "opencloud"; }
       ];
 
       keybindings = let
