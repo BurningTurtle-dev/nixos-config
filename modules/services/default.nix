@@ -13,5 +13,6 @@
     ./flatpak.nix
     ./udev.nix
     ./powermanagement.nix
+    ./pam.nix
   ];
 }

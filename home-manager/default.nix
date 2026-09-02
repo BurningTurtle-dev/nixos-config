@@ -6,6 +6,7 @@
     ./rofi/rofi.nix
     ./custom_scripts/default.nix
     ./development/default.nix
+    ./appimages/default.nix
     ./sway.nix
     ./alacritty.nix
     #./themes.nix
@@ -21,7 +22,7 @@
     ./stylix.nix
     ./firefox.nix
     ./mc.nix
-    ./opencloud.nix
+    ./gnome-keyring.nix
   ];
 
   xdg.mimeApps = {
