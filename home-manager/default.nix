@@ -21,6 +21,7 @@
     ./stylix.nix
     ./firefox.nix
     ./mc.nix
+    ./opencloud.nix
   ];
 
   xdg.mimeApps = {

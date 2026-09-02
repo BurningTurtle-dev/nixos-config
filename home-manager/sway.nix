@@ -564,7 +564,6 @@ in
         { command = "wl-paste --type text --watch cliphist store"; }
         { command = "wl-paste --type image --watch cliphist store"; }
         { command = "localsend_app --hidden"; }
-        { command = "seafile-applet"; }
       ];
 
       keybindings = let

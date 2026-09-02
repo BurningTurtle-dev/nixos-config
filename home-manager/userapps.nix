@@ -5,7 +5,6 @@
   home.packages = with pkgs; [
     obsidian
     openscad
-    seafile-client
     qalculate-gtk
     signal-desktop
     calibre
@@ -19,10 +18,8 @@
     tailscale-systray
     fastfetch
     gparted
-    seafile-client
     gedit
     file-roller
-    xournalpp
     jellyfin-desktop
     imv
     yt-dlp

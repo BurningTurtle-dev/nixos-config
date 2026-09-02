@@ -8,6 +8,7 @@
       #"com.yubico.yubioath"
       "com.discordapp.Discord"
       "us.zoom.Zoom"
+      "com.github.xournalpp.xournalpp"
     ];
   };
 }

@@ -56,6 +56,19 @@
             icon = "https://nixos.org/favicon.ico";
             definedAliases = [ "@np" ];
           };
+
+          "NixOS Wiki" = {
+            urls = [
+              {
+                template = "https://wiki.nixos.org/w/index.php";
+                params = [
+                  { name = "search"; value = "{searchTerms}"; }
+                ];
+              }
+            ];
+            icon           = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@nw" ];
+          };
         };
       };
     };
