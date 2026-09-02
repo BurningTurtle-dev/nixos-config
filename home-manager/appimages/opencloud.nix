@@ -17,9 +17,9 @@ let
   };
 in
 appimageTools.wrapType2 {
-    inherit pname version src;
-    extraInstallCommands = ''
-      mkdir -p $out/share/applications
-      cp ${desktopItem}/share/applications/*.desktop $out/share/applications/
-    '';
-  }
+  inherit pname version src;
+  extraInstallCommands = ''
+    mkdir -p $out/share/applications
+    cp ${desktopItem}/share/applications/*.desktop $out/share/applications/
+  '';
+}

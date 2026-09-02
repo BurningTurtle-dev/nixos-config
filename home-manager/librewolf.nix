@@ -38,7 +38,7 @@
         #"signon.rememberSignons" = true;
         #"browser.contentblocking.category" = "strict";
         #"extensions.pocket.enabled" = false;
-        #"browser.toolbars.bookmarks.visibility" = "newtab";
+        "browser.toolbars.bookmarks.visibility" = "newtab";
       };
 
       search = {
@@ -68,6 +68,17 @@
             ];
             icon           = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@nw" ];
+          };
+
+          "Arch Wiki" = {
+            urls = [{
+              template = "https://wiki.archlinux.org/index.php";
+              params = [
+                { name = "search"; value = "{searchTerms}"; }
+              ];
+            }];
+            icon = "https://wiki.archlinux.org/favicon.ico";
+            definedAliases = [ "@aw" ];
           };
         };
       };
