@@ -16,6 +16,7 @@
         ingress = {
           "vault.burningturtle.win" = "http://localhost:8222";
           "opencloud.burningturtle.win" = "http://localhost:7218";
+          "git.burningturtle.win" = "http://localhost:6702";
         };
       };
     };

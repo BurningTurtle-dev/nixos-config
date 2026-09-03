@@ -6,6 +6,7 @@
     ./cloudflared.nix
     ./vaultwarden.nix
     ./opencloud.nix
+    ./forgejo.nix
   ];
 }
 
