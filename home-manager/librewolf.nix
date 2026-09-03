@@ -56,6 +56,18 @@
             icon = "https://nixos.org/favicon.ico";
             definedAliases = [ "@np" ];
           };
+          
+          "MyNixOS" = {
+            urls = [{
+              template = "https://mynixos.com/search";
+              params = [
+                { name = "?q"; value = "{searchTerms}"; }
+              ];
+            }];
+            icon = "https://mynixos.com/favicon.ico";
+            definedAliases = [ "@mn" ];
+          };
+
 
           "NixOS Wiki" = {
             urls = [
