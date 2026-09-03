@@ -8,5 +8,6 @@
     ./ssh.nix
     ./servers/default.nix
     ./auto-upgrade.nix
+    ./logrotate.nix
   ];
 }
