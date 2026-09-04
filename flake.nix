@@ -1,7 +1,9 @@
 
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "git+https://git.burningturtle.win/burningturtle/nixpkgs?ref=nixos-unstable&shallow=1";
+    nixpkgs-fallback.url = "github:nixos/nixpkgs/nixos-unstable";
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,33 +21,44 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nixvim, nix-flatpak, sops-nix, nix-vscode-extensions, stylix, ... }:
+  outputs = { self, nixpkgs, nixpkgs-fallback, home-manager, nur, nixvim, nix-flatpak, sops-nix, nix-vscode-extensions, stylix, ... }:
     let
       system = "x86_64-linux";
+
+      commonModules = [
+        sops-nix.nixosModules.sops
+        stylix.nixosModules.stylix
+        home-manager.nixosModules.home-manager
+        {
+          nixpkgs.overlays = [ nur.overlays.default ];
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.burningturtle = {
+            imports = [
+              ./home.nix
+              nixvim.homeModules.nixvim
+	      nix-flatpak.homeManagerModules.nix-flatpak
+            ];
+          };
+        }
+      ];
+
+      mkHost = { hostConfig, extraModules ? [ ], nixpkgsSource ? nixpkgs }:
+        nixpkgsSource.lib.nixosSystem {
+          inherit system;
+          modules = commonModules ++ [ hostConfig ] ++ extraModules;
+        };
+
     in {
       nixosConfigurations = {
-        hp = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./hosts/hp/configuration.nix
-	    sops-nix.nixosModules.sops
-            stylix.nixosModules.stylix
-
-            home-manager.nixosModules.home-manager
-            {
-              nixpkgs.overlays = [ nur.overlays.default ];
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.burningturtle = {
-                imports = [
-                  ./home.nix
-                  nixvim.homeModules.nixvim
-		  nix-flatpak.homeManagerModules.nix-flatpak
-                ];
-              };
-            }
-          ];
+        hp = mkHost {
+          hostConfig = ./hosts/hp/configuration.nix;
         };
+        hp-fallback = mkHost {
+          hostConfig = ./hosts/hp/configuration.nix;
+          nixpkgsSource = nixpkgs-fallback;
+        };
+
       };
     };
 }

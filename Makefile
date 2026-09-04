@@ -7,6 +7,13 @@ build:
 	@[ -n "$(HARDWARE)" ] || { echo "HARDWARE env var not set. Canceling build!!!"; exit 1; }
 	nixos-rebuild switch --flake .#$(HARDWARE)
 
+build-fallback:
+	clear
+	git add .
+	@[ -n "$(HARDWARE)-fallback" ] || { echo "HARDWARE env var not set. Canceling build!!!"; exit 1; }
+	nixos-rebuild switch --flake .#$(HARDWARE)-fallback
+
+
 upgrade:
 	nix flake update
 	$(MAKE) build
