@@ -28,6 +28,7 @@
         name = "BurningTurtle";
         email = "git@burningturtle.win";
       };
+      core.editor = "nvim -u NONE";
     };
   };
 
