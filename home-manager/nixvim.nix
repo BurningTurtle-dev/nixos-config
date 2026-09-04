@@ -143,9 +143,16 @@
 
       {
         mode = "n";
-        key = "<leader>f";
+        key = "<leader>g";
         action = "<cmd>lua _G.next_fix()<CR>";
-        options.desc = "Suggest fix for next problem";
+        options.desc = "Go to next problem";
+      }
+
+      {
+        mode = "n";
+        key = "<leader>f";
+        action = "<cmd>lua _G.suggest_fix()<CR>";
+        options.desc = "Suggest fix for selected problem";
       }
 
       {
@@ -195,10 +202,11 @@
 
     extraConfigLua = ''
       function _G.next_fix()
-        local success = vim.diagnostic.jump({ count = 1 })
-        if success then
-          vim.lsp.buf.code_action()
-        end
+        vim.diagnostic.jump({ count = 1 })
+      end
+
+      function _G.suggest_fix()
+        vim.lsp.buf.code_action()
       end
 
       function _G.next_problem()
