@@ -5,7 +5,8 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-      suedit = "sudo -E nvim";
+      suedit = "doas nvim";
+      sudo = "doas";
       mdkir = "mkdir";
       naspi = "ssh user@192.168.0.16 -p 8273 -i ~/.ssh/naspi";
     };

@@ -26,6 +26,21 @@
     shell = pkgs.fish;
   };
 
+
+  security = {
+    sudo.enable = false;
+
+    doas = {
+      enable = true;
+      
+      extraRules = [{
+        users = ["burningturtle"];
+        keepEnv = true; 
+        persist = true;
+      }];
+    };
+  };
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
