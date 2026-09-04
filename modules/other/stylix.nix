@@ -23,8 +23,8 @@
         name = "DejaVu Sans";
       };
       monospace = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans Mono";
+        package = pkgs.nerd-fonts.hack;
+        name = "Hack Nerd Font Mono";
       };
       emoji = {
         package = pkgs.noto-fonts-color-emoji;
