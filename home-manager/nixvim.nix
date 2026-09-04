@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     ripgrep
     clang-tools
+    luaPackages.tree-sitter-cli
   ];
 
   programs.nixvim = {
@@ -50,6 +51,7 @@
           nix
           python
           regex
+          rust
           toml
           vim
           vimdoc
@@ -127,6 +129,7 @@
         taplo.enable = true;
         lemminx.enable = true;
         marksman.enable = true;
+        rust_analyzer.enable = true;
       };
 
       inlayHints.enable = true;
@@ -169,7 +172,26 @@
         options.desc = "Closes current buffer";
       }
 
+      {
+        mode = ["n" "v"];
+        key = "d";
+        action = "\"\"d";
+        options.desc = "Delete without touching system clipboard";
+      }
 
+      {
+        mode = "n";
+        key = "D";
+        action = "\"\"D";
+        options.desc = "Delete to end of line without touching system clipboard";
+      }
+
+      {
+        mode = "n";
+        key = "dd";
+        action = "\"\"dd";
+        options.desc = "Delete line without touching system clipboard";
+      }
 
       {
         mode = "n";
