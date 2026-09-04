@@ -7,6 +7,7 @@
     settings = {
       ly_log = "/var/log/ly.log";
       session_log = ".local/state/ly-session.log";
+      clear_password = true;
     };
   };
 }
